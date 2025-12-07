@@ -1,7 +1,7 @@
 const availableOptions = {
   title: {
     type: 'string',
-    default: '',
+    default: '## Table of Contents',
     comment: '',
   },
   style: {
