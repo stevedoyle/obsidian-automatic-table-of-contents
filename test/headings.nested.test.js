@@ -9,7 +9,7 @@ const { parseOptionsFromSourceText } = require('../src/options.js')
 
 describe('Nested headings', () => {
   test('Returns indented list with links', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     const md = getMarkdownFromHeadings(testStandardHeadings, options)
     const expectedMd = sanitizeMd(`
 - [[#Title 1 level 1|Title 1 level 1]]
@@ -23,7 +23,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented list with links if no first level', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     const md = getMarkdownFromHeadings(testHeadingsWithoutFirstLevel, options)
     const expectedMd = sanitizeMd(`
 - [[#Title 1 level 2|Title 1 level 2]]
@@ -37,7 +37,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented ordered list with links', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     options.style = 'nestedOrderedList'
     const md = getMarkdownFromHeadings(testStandardHeadings, options)
     const expectedMd = sanitizeMd(`
@@ -52,7 +52,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented list with min level', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     options.minLevel = 2
     const md = getMarkdownFromHeadings(testStandardHeadings, options)
     const expectedMd = sanitizeMd(`
@@ -64,7 +64,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented list with max level', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     options.maxLevel = 2
     const md = getMarkdownFromHeadings(testStandardHeadings, options)
     const expectedMd = sanitizeMd(`
@@ -78,7 +78,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented list without links', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     options.includeLinks = false
     const md = getMarkdownFromHeadings(testStandardHeadings, options)
     const expectedMd = sanitizeMd(`
@@ -93,7 +93,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented list with title', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     options.title = '# My TOC'
     const md = getMarkdownFromHeadings(testStandardHeadings, options)
     const expectedMd = sanitizeMd(`
@@ -109,7 +109,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented list with sanitized links from special chars', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     const md = getMarkdownFromHeadings(testHeadingsWithSpecialChars, options)
     const expectedMd = sanitizeMd(`
 - [[#Title 1 \`level 1\` {with special chars}, **bold**, _some_italic_, a-tag, ==highlighted== and ~~strikethrough~~ text|Title 1 level 1 {with special chars}, bold, some_italic,#a-tag, highlighted and strikethrough text]]
@@ -121,7 +121,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented list without links from special chars', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     options.includeLinks = false
     const md = getMarkdownFromHeadings(testHeadingsWithSpecialChars, options)
     const expectedMd = sanitizeMd(`
@@ -134,7 +134,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented list with includes', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     options.includeLinks = false
     options.include = /(title [23])/i
     const md = getMarkdownFromHeadings(testStandardHeadings, options)
@@ -147,7 +147,7 @@ describe('Nested headings', () => {
   })
 
   test('Returns indented list with excludes', () => {
-    const options = parseOptionsFromSourceText('')
+    const options = parseOptionsFromSourceText('title: null')
     options.includeLinks = false
     options.exclude = /(Title 1 level 1|Title 3 level 2)/
     const md = getMarkdownFromHeadings(testStandardHeadings, options)

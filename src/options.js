@@ -119,6 +119,10 @@ function parseOptionFromSourceLine(line) {
     return { name: possibleName, value: possibleValue }
   }
   if (optionParams && optionParams.type === 'string') {
+    // Allow explicitly setting empty string to override default
+    if (possibleValue === 'null' || possibleValue === '""' || possibleValue === "''") {
+      return { name: possibleName, value: '' }
+    }
     return { name: possibleName, value: possibleValue }
   }
   if (optionParams && optionParams.type === 'regexp') {

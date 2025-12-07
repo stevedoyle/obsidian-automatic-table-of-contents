@@ -4,7 +4,7 @@ describe('Options', () => {
   test('Returns default options if none are specified', () => {
     const options = parseOptionsFromSourceText('')
     expect(options).toEqual({
-      title: '',
+      title: '## Table of Contents',
       style: 'nestedList',
       minLevel: 0,
       maxLevel: 0,
